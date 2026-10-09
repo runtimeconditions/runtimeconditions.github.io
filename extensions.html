@@ -148,6 +148,7 @@ fieldValues:
             </div>
             <pre><code>metadata:
   id: https://runtimeconditions.io/extensions/common-integrations/v1alpha1/runtimeconditions.extension.yaml
+  version: v1alpha1
 
 spec:
   kinds:
@@ -343,8 +344,8 @@ go:
           <div class="example">
             <div class="example-title">Profile declaration and extension-owned fields</div>
             <pre><code>extensions:
-  - https://runtimeconditions.io/extensions/common-integrations/v1alpha1/runtimeconditions.extension.yaml
-  - https://runtimeconditions.io/extensions/env-configuration/v1alpha1/runtimeconditions.extension.yaml
+  - https://runtimeconditions.io/extensions/common-integrations:v1alpha1
+  - https://runtimeconditions.io/extensions/env-configuration:v1alpha1
 
 conditions:
   - name: request-cache
@@ -372,6 +373,7 @@ conditions:
             </div>
             <pre><code>metadata:
   id: https://aws.example.com/runtimeconditions/object-store/v1alpha1/runtimeconditions.extension.yaml
+  version: v1alpha1
 
 spec:
   kinds:
