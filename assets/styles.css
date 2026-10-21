@@ -79,13 +79,6 @@ a:hover {
   white-space: nowrap;
 }
 
-.brand-logo {
-  width: 32px;
-  height: 32px;
-  display: block;
-  flex: none;
-}
-
 .top-links {
   display: flex;
   flex-wrap: wrap;
