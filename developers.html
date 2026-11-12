@@ -53,8 +53,8 @@
             <pre><code>package main
 
 import (
-  common "github.com/runtimeconditions/extensions/common-integrations/go"
-  env "github.com/runtimeconditions/extensions/env-configuration/go"
+  common "runtimeconditions.io/x/rc/common"
+  env "runtimeconditions.io/x/rc/env"
 )</code></pre>
           </div>
         </section>
@@ -184,8 +184,8 @@ workload:
   version: v0.1.0
 
 extensions:
-  - https://runtimeconditions.io/extensions/common-integrations/v1alpha1/runtimeconditions.extension.yaml
-  - https://runtimeconditions.io/extensions/env-configuration/v1alpha1/runtimeconditions.extension.yaml
+  - https://runtimeconditions.io/extensions/rc/common-integrations/v1alpha1/runtimeconditions.extension.yaml
+  - https://runtimeconditions.io/extensions/rc/env-configuration/v1alpha1/runtimeconditions.extension.yaml
 
 conditions:
   - name: todos-api
@@ -235,7 +235,7 @@ mvn -q package
 
 java -jar target/runtimeconditions-java-profiler-0.1.0-SNAPSHOT.jar generate \
   --project src/testdata/declarative-app \
-  --classpath ../extensions/common-integrations/java:../extensions/env-configuration/java \
+  --classpath ../extensions/catalog/rc/common-integrations/java:../extensions/catalog/rc/env-configuration/java \
   --name java-declarative-app \
   --workload-uri example/java-declarative-app \
   --workload-version test</code></pre>

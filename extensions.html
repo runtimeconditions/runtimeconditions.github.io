@@ -50,7 +50,7 @@
                 <tr><th>Extension Part</th><th>What It Does</th><th>Example</th></tr>
               </thead>
               <tbody>
-                <tr><td>`dependencies`</td><td>References vocabulary owned by other extensions.</td><td>`https://runtimeconditions.io/extensions/common-integrations/v1alpha1/runtimeconditions.extension.yaml`</td></tr>
+                <tr><td>`dependencies`</td><td>References vocabulary owned by other extensions.</td><td>`https://runtimeconditions.io/extensions/rc/common-integrations/v1alpha1/runtimeconditions.extension.yaml`</td></tr>
                 <tr><td>`kinds`</td><td>Defines Condition categories.</td><td>`api`, `datastore`, `cache`</td></tr>
                 <tr><td>`interfaceTypes`</td><td>Defines valid interface types for a kind.</td><td>`http` for `api`, `key_value` for `cache`</td></tr>
                 <tr><td>`conditionFields`</td><td>Defines extension-owned fields on Conditions.</td><td>`configuration`</td></tr>
@@ -149,7 +149,7 @@ fieldValues:
               <a href="https://github.com/runtimeconditions/extensions/blob/main/common-integrations/common-integrations-v1alpha1.yaml">source</a>
             </div>
             <pre><code>metadata:
-  id: https://runtimeconditions.io/extensions/common-integrations/v1alpha1/runtimeconditions.extension.yaml
+  id: https://runtimeconditions.io/extensions/rc/common-integrations/v1alpha1/runtimeconditions.extension.yaml
   version: v1alpha1
 
 spec:
@@ -247,7 +247,7 @@ spec:
             </div>
             <pre><code>spec:
   dependencies:
-    - https://runtimeconditions.io/extensions/common-integrations/v1alpha1/runtimeconditions.extension.yaml
+    - https://runtimeconditions.io/extensions/rc/common-integrations/v1alpha1/runtimeconditions.extension.yaml
 
   conditionFields:
     - name: configuration
@@ -290,8 +290,8 @@ spec:
           <div class="example">
             <div class="example-title">Dual-import declaration code</div>
             <pre><code>import (
-  common "github.com/runtimeconditions/extensions/common-integrations/go"
-  env "github.com/runtimeconditions/extensions/env-configuration/go"
+  common "runtimeconditions.io/x/rc/common"
+  env "runtimeconditions.io/x/rc/env"
 )
 
 common.Cache("request-cache",
@@ -305,11 +305,11 @@ common.Cache("request-cache",
 kind: RuntimeConditionsBinding
 
 metadata:
-  extension: https://runtimeconditions.io/extensions/env-configuration/v1alpha1/runtimeconditions.extension.yaml
+  extension: https://runtimeconditions.io/extensions/rc/env-configuration/v1alpha1/runtimeconditions.extension.yaml
   language: go
 
 go:
-  importPath: github.com/runtimeconditions/extensions/env-configuration/go
+  importPath: runtimeconditions.io/x/rc/env
   package: envconfiguration
 
   options:
@@ -346,8 +346,8 @@ go:
           <div class="example">
             <div class="example-title">Profile declaration and extension-owned fields</div>
             <pre><code>extensions:
-  - https://runtimeconditions.io/extensions/common-integrations:v1alpha1
-  - https://runtimeconditions.io/extensions/env-configuration:v1alpha1
+  - https://runtimeconditions.io/extensions/rc/common-integrations:v1alpha1
+  - https://runtimeconditions.io/extensions/rc/env-configuration:v1alpha1
 
 conditions:
   - name: request-cache
