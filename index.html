@@ -68,42 +68,49 @@
               <a href="developers.html">Where this comes from</a>
             </div>
             <pre><code>apiVersion: runtimeconditions.io/v1alpha1
-kind: RuntimeConditionsProfile
+kind: RuntimeConditionsProfile # Describes what a workload needs at runtime.
 
 metadata:
   name: request-logger-http
 
+# The application these requirements belong to.
 workload:
   uri: github.com/runtimeconditions/rc-demos/apps/request-logger-http
   version: v0.1.0
 
+# Extensions define the Condition vocabulary and its validation rules.
+# These cover integration requirements and environment-variable configuration.
 extensions:
   - https://runtimeconditions.io/extensions/rc/common-integrations:v1alpha2
   - https://runtimeconditions.io/extensions/rc/env-configuration:v1alpha2
 
+# Each Condition describes one runtime requirement.
 conditions:
   - name: todos-api
-    kind: api
-    interface:
+    kind: api # Requirement category defined by the integration extension.
+    interface: # Describes the capabilities the application needs.
       type: http
       spec:
         format: openapi
+        # A catalog reference to the API contract, not its deployed service URL.
         uri: catalog://api/default/todos-api
         version: 1.0.0
       operations:
         - method: GET
-          path: /todos/{id}
-    configuration:
+          path: /todos/{id} # The API operation this application needs.
+    configuration: # Describes how connection information reaches the application.
       env:
-        - property: baseUrl
-          name: TODOS_API_URL
+        - property: baseUrl # The connection property being requested.
+          name: TODOS_API_URL # Variable name, not its deployed value.
 
   - name: request-cache
     kind: cache
     interface:
       type: key_value
-      engine: redis
+      engine: redis # Requires Redis; the Profile does not provision it.
     configuration:
+      # Alternative configuration forms: URL, OR hostname AND port together.
+      # A platform adapter must understand and fulfill the selected form.
       alternatives:
         - env:
             - property: url
